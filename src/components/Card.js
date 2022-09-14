@@ -1,15 +1,15 @@
-function Card() {
+function Card(title, imageUrl, price) {
   return (
     <div className="card">
       <div className="favorite">
         <img width={32} height={32} src="/img/heart-unliked.svg" alt="heart" />
       </div>
-      <img width={133} height={123} src="/img/sneakers/1.jpg" alt="sneakers" />
-      <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
+      <img width={133} height={123} src={imageUrl} alt="sneakers" />
+      <p>{title}</p>
       <div className="price-wrapper">
         <div className="price">
           <span>Цена:</span>
-          <b>12 999 руб.</b>
+          <b>{price}</b>
         </div>
         <div className="btn-wrapper">
           <button>
