@@ -24,6 +24,13 @@ function App() {
         </div>
         <div className="card-wrapper">
           <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </div>
       </div>
     </div>
