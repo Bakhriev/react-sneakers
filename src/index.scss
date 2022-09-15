@@ -257,9 +257,12 @@ body {
   flex-wrap: wrap;
   gap: 40px;
   .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     max-width: 210px;
     background: #ffffff;
-    border: 1px solid #f3f3f3;
+    border: 1px solid #cdd3db;
     border-radius: 40px;
     padding: 20px 30px 34px 30px;
     transition: 0.3s ease all;
@@ -287,7 +290,6 @@ body {
       .price {
         display: flex;
         flex-direction: column;
-        gap: 2px;
         span {
           font-weight: 500;
           font-size: 11px;
