@@ -1,17 +1,19 @@
+import styles from "./Drawer.module.scss";
+console.log(styles);
 function Drawer() {
   return (
-    <div className="drawer">
-      <div className="drawer__container">
+    <div className={styles.drawer}>
+      <div className={styles.drawer__container}>
         <h2>Корзина</h2>
-        <div className="cartItemWrapper">
-          <div className="cartItem">
+        <div className={styles.cartItemWrapper}>
+          <div className={styles.cartItem}>
             <img
               width={70}
               height={70}
               src="/img/sneakers/1.jpg"
               alt="sneakers"
             />
-            <div className="cartItemText">
+            <div className={styles.cartItemText}>
               <p>Мужские Кроссовки Nike Air Max 270</p>
               <span>12 999 руб.</span>
             </div>
@@ -23,14 +25,14 @@ function Drawer() {
               alt="cancel"
             />
           </div>
-          <div className="cartItem">
+          <div className={styles.cartItem}>
             <img
               width={70}
               height={70}
               src="/img/sneakers/2.jpg"
               alt="sneakers"
             />
-            <div className="cartItemText">
+            <div className={styles.cartItemText}>
               <p>Мужские Кроссовки Nike Air Max 270</p>
               <span>12 999 руб.</span>
             </div>
@@ -42,14 +44,14 @@ function Drawer() {
               alt="cancel"
             />
           </div>
-          <div className="cartItem">
+          <div className={styles.cartItem}>
             <img
               width={70}
               height={70}
               src="/img/sneakers/1.jpg"
               alt="sneakers"
             />
-            <div className="cartItemText">
+            <div className={styles.cartItemText}>
               <p>Мужские Кроссовки Nike Air Max 270</p>
               <span>12 999 руб.</span>
             </div>
@@ -61,38 +63,38 @@ function Drawer() {
               alt="cancel"
             />
           </div>
-          <div className="cartItem">
+          <div className={styles.cartItem}>
             <img
               width={70}
               height={70}
               src="/img/sneakers/1.jpg"
               alt="sneakers"
             />
-            <div className="cartItemText">
+            <div className={styles.cartItemText}>
               <p>Мужские Кроссовки Nike Air Max 270</p>
               <span>12 999 руб.</span>
             </div>
             <img
-              className="cancel"
+              className={styles.cancel}
               width={32}
               height={32}
               src="/img/cancel.svg"
               alt="cancel"
             />
           </div>
-          <div className="cartItem">
+          <div className={styles.cartItem}>
             <img
               width={70}
               height={70}
               src="/img/sneakers/1.jpg"
               alt="sneakers"
             />
-            <div className="cartItemText">
+            <div className={styles.cartItemText}>
               <p>Мужские Кроссовки Nike Air Max 270</p>
               <span>12 999 руб.</span>
             </div>
             <img
-              className="cancel"
+              className={styles.cancel}
               width={32}
               height={32}
               src="/img/cancel.svg"
@@ -100,7 +102,7 @@ function Drawer() {
             />
           </div>
         </div>
-        <ul className="priceMenu">
+        <ul className={styles.priceMenu}>
           <li>
             <p>Итого: </p>
             <span></span>
