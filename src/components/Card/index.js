@@ -1,7 +1,9 @@
+import styles from "./Card.module.scss";
+
 function Card(title, imageUrl, price) {
   return (
-    <div className="card">
-      <div className="favorite">
+    <div className={styles.card}>
+      <div className={styles.favorite}>
         <svg
           width="22"
           height="19"
@@ -19,8 +21,8 @@ function Card(title, imageUrl, price) {
         <img width={133} height={123} src={imageUrl} alt="sneakers" />
         <p>{title}</p>
       </div>
-      <div className="price-wrapper">
-        <div className="price">
+      <div className={styles.price_wrapper}>
+        <div className={styles.price}>
           <span>Цена:</span>
           <b>{price}</b>
         </div>

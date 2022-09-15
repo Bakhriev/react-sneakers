@@ -252,60 +252,13 @@ body {
 }
 
 //cards in content
-.card-wrapper {
+.card_wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 210px;
-    background: #ffffff;
-    border: 1px solid #cdd3db;
-    border-radius: 40px;
-    padding: 20px 30px 34px 30px;
-    transition: 0.3s ease all;
-    &:hover {
-      transform: translateY(-15px);
-    }
-    img {
-      margin-bottom: 14px;
-    }
-    p {
-      font-size: 14px;
-      line-height: 1.2;
-      max-width: 150px;
-      color: #000;
-      margin-bottom: 14px;
-    }
-    .favorite {
-      position: absolute;
-      cursor: pointer;
-    }
-    .price-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .price {
-        display: flex;
-        flex-direction: column;
-        span {
-          font-weight: 500;
-          font-size: 11px;
-          line-height: 1.1;
-          text-transform: uppercase;
-          color: #bdbdbd;
-          b {
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 1.2;
-            color: #000;
-          }
-        }
-      }
-    }
-  }
+  max-width: 970px;
+  margin: 0 auto;
+  padding-bottom: 40px;
 }
 
 //overlay, drawer

@@ -85,9 +85,9 @@ function App() {
             <input placeholder="Поиск..." />
           </div>
         </div>
-        <div className="card-wrapper">
-          {arr.map((obj) => Card(obj.title, obj.imageUrl, obj.price))}
-        </div>
+      </div>
+      <div className="card_wrapper">
+        {arr.map((obj) => Card(obj.title, obj.imageUrl, obj.price))}
       </div>
     </div>
   );
