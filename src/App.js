@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -87,7 +88,9 @@ function App() {
         </div>
       </div>
       <div className="card_wrapper">
-        {arr.map((obj) => Card(obj.title, obj.imageUrl, obj.price))}
+        {arr.map((obj) => (
+          <Card title={obj.title} imageUrl={obj.imageUrl} price={obj.price} />
+        ))}
       </div>
     </div>
   );

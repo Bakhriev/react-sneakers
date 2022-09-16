@@ -1,5 +1,5 @@
 import styles from "./Drawer.module.scss";
-console.log(styles);
+
 function Drawer() {
   return (
     <div className={styles.drawer}>
