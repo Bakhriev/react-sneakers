@@ -5,7 +5,7 @@ function Card(props) {
   const [isAdded, setIsAdded] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
 
-  const handleClick = () => {
+  const handleClickPlus = () => {
     setIsAdded(!isAdded);
   };
   const handleClickHeart = () => {
@@ -34,7 +34,7 @@ function Card(props) {
           <img
             src={isAdded ? "./img/btn-checked.svg" : "./img/plus.svg"}
             alt="plus"
-            onClick={handleClick}
+            onClick={handleClickPlus}
           />
         </div>
       </div>

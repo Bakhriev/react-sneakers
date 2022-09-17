@@ -33,12 +33,10 @@
     display: flex;
     align-items: center;
     .menu {
-      svg {
-        cursor: pointer;
-      }
       display: flex;
       gap: 30px;
       &__item {
+        cursor: pointer;
         display: flex;
         align-items: center;
         gap: 10px;

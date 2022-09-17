@@ -67,12 +67,11 @@ const arr = [
 ];
 
 function App() {
+  const [cartOpened, setCartOpened] = React.useState(false);
   return (
     <div className="wrapper">
-      <div className="overlay">
-        <Drawer />
-      </div>
-      <Header />
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      <Header onClickCard={() => setCartOpened(true)} />
       <div className="content container">
         <div className="title">
           <h1>Все кроссовки</h1>
