@@ -156,6 +156,24 @@ body {
   }
 }
 
+// Scroll Body
+body::-webkit-scrollbar {
+  width: 15px;
+  background-color: #f9f9fd;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #18aaaa;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+//
+
 //wrapper
 .wrapper {
   overflow: hidden;
@@ -208,7 +226,7 @@ body {
     }
   }
 }
-//Card wrapper
+//Card_Wrapper
 .card_wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -217,4 +235,3 @@ body {
   margin: 0 auto;
   padding-bottom: 40px;
 }
-

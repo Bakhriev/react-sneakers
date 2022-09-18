@@ -11,7 +11,6 @@ function Card(props) {
   const handleClickHeart = () => {
     setIsLiked(!isLiked);
   };
-
   return (
     <div className={styles.card}>
       <div className={styles.favorite} onClick={props.onFavorite}>
