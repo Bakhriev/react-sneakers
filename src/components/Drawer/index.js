@@ -1,14 +1,15 @@
 import styles from "./Drawer.module.scss";
 
-function Drawer(props) {
+function Drawer({ onClose, onRemove, items = [] }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <div className={styles.drawer__container}>
           <div className={styles.cartTitleWrapper}>
             <h2>Корзина</h2>
+
             <svg
-              onClick={props.onClose}
+              onClick={onClose}
               width="32"
               height="32"
               viewBox="0 0 32 32"
@@ -31,101 +32,23 @@ function Drawer(props) {
             </svg>
           </div>
           <div className={styles.cartItemWrapper}>
-            <div className={styles.cartItem}>
-              <img
-                width={70}
-                height={70}
-                src="/img/sneakers/1.jpg"
-                alt="sneakers"
-              />
-              <div className={styles.cartItemText}>
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <span>12 999 руб.</span>
+            {items.map((obj) => (
+              <div className={styles.cartItem}>
+                <img width={70} height={70} src={obj.imageUrl} alt="sneakers" />
+                <div className={styles.cartItemText}>
+                  <p>{obj.title}</p>
+                  <span>{obj.price} руб.</span>
+                </div>
+                <img
+                  onClick={() => onRemove(obj.id)}
+                  className={styles.cancel}
+                  width={32}
+                  height={32}
+                  src="/img/cancel.svg"
+                  alt="cancel"
+                />
               </div>
-              <img
-                className="cancel"
-                width={32}
-                height={32}
-                src="/img/cancel.svg"
-                alt="cancel"
-              />
-            </div>
-            <div className={styles.cartItem}>
-              <img
-                width={70}
-                height={70}
-                src="/img/sneakers/2.jpg"
-                alt="sneakers"
-              />
-              <div className={styles.cartItemText}>
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <span>12 999 руб.</span>
-              </div>
-              <img
-                className="cancel"
-                width={32}
-                height={32}
-                src="/img/cancel.svg"
-                alt="cancel"
-              />
-            </div>
-            <div className={styles.cartItem}>
-              <img
-                width={70}
-                height={70}
-                src="/img/sneakers/1.jpg"
-                alt="sneakers"
-              />
-              <div className={styles.cartItemText}>
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <span>12 999 руб.</span>
-              </div>
-              <img
-                className="cancel"
-                width={32}
-                height={32}
-                src="/img/cancel.svg"
-                alt="cancel"
-              />
-            </div>
-            <div className={styles.cartItem}>
-              <img
-                width={70}
-                height={70}
-                src="/img/sneakers/1.jpg"
-                alt="sneakers"
-              />
-              <div className={styles.cartItemText}>
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <span>12 999 руб.</span>
-              </div>
-              <img
-                className={styles.cancel}
-                width={32}
-                height={32}
-                src="/img/cancel.svg"
-                alt="cancel"
-              />
-            </div>
-            <div className={styles.cartItem}>
-              <img
-                width={70}
-                height={70}
-                src="/img/sneakers/1.jpg"
-                alt="sneakers"
-              />
-              <div className={styles.cartItemText}>
-                <p>Мужские Кроссовки Nike Air Max 270</p>
-                <span>12 999 руб.</span>
-              </div>
-              <img
-                className={styles.cancel}
-                width={32}
-                height={32}
-                src="/img/cancel.svg"
-                alt="cancel"
-              />
-            </div>
+            ))}
           </div>
           <ul className={styles.priceMenu}>
             <li>

@@ -1,11 +1,13 @@
+import axios from "axios";
 import React from "react";
 import styles from "./Card.module.scss";
 
-function Card(props) {
+function Card({ onClickAdd, onFavorite, title, imageUrl, price }) {
   const [isAdded, setIsAdded] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
 
   const handleClickPlus = () => {
+    onClickAdd({ title, imageUrl, price });
     setIsAdded(!isAdded);
   };
   const handleClickHeart = () => {
@@ -13,7 +15,7 @@ function Card(props) {
   };
   return (
     <div className={styles.card}>
-      <div className={styles.favorite} onClick={props.onFavorite}>
+      <div className={styles.favorite} onClick={onFavorite}>
         <img
           src={isLiked ? "./img/heart-liked.png" : "./img/heart-unliked.svg"}
           alt="heart"
@@ -21,13 +23,13 @@ function Card(props) {
         />
       </div>
       <div className="title-wrapper">
-        <img width={133} height={123} src={props.imageUrl} alt="sneakers" />
-        <p>{props.title}</p>
+        <img width={133} height={123} src={imageUrl} alt="sneakers" />
+        <p>{title}</p>
       </div>
       <div className={styles.price_wrapper}>
-        <div className={styles.price}>
+        <div className={price}>
           <span>Цена:</span>
-          <b>{props.price}</b>
+          <b>{price}</b>
         </div>
         <div className={styles.btn_wrapper}>
           <img
