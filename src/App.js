@@ -36,8 +36,8 @@ function App() {
     axios.post("https://6325daa94cd1a2834c45d03c.mockapi.io/cart", obj);
   };
   const onRemoveItem = (id) => {
-    //axios.delete(`https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
+    axios.delete(`https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${id}`);
   };
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);

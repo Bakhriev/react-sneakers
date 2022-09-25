@@ -1,6 +1,6 @@
 import styles from "./Drawer.module.scss";
 
-function Drawer({ onClose, onRemove, items = [] }) {
+function Drawer({ onClose, onRemove, items }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
