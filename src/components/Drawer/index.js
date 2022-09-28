@@ -1,6 +1,6 @@
 import styles from "./Drawer.module.scss";
 
-function Drawer({ onClose, onRemove, items }) {
+function Drawer({ onClose, onRemove, cartItems, setCartItems }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
@@ -32,7 +32,7 @@ function Drawer({ onClose, onRemove, items }) {
             </svg>
           </div>
           <div className={styles.cartItemWrapper}>
-            {items.map((obj) => (
+            {cartItems.map((obj) => (
               <div className={styles.cartItem}>
                 <img width={70} height={70} src={obj.imageUrl} alt="sneakers" />
                 <div className={styles.cartItemText}>
@@ -40,7 +40,7 @@ function Drawer({ onClose, onRemove, items }) {
                   <span>{obj.price} руб.</span>
                 </div>
                 <img
-                  onClick={() => onRemove(obj.id)}
+                  onClick={() => onRemove(obj.objectId)}
                   className={styles.cancel}
                   width={32}
                   height={32}

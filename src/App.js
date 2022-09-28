@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Route, Routes } from "react-router-dom";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -31,13 +32,23 @@ function App() {
       .then((res) => setCartItems(res.data));
   }, []);
 
-  const onCLickAddCart = (obj) => {
-    setCartItems((prev) => [...prev, obj]);
-    axios.post("https://6325daa94cd1a2834c45d03c.mockapi.io/cart", obj);
+  const onCLickAddCart = async (obj) => {
+    if (cartItems.find((elem) => elem.id === obj.objectId)) {
+      axios.delete(
+        `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${obj.objectId}`
+      );
+      setCartItems((prev) => [...prev, obj]);
+    } else {
+      console.log("Post: Current obj = ", obj);
+      await axios.post("https://6325daa94cd1a2834c45d03c.mockapi.io/cart", obj);
+      setCartItems((prev) => [...prev, obj]);
+    }
   };
-  const onRemoveItem = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-    axios.delete(`https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${id}`);
+  const onRemoveItem = async (objectId) => {
+    await axios.delete(
+      `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${objectId}`
+    );
+    setCartItems((prev) => prev.filter((item) => item.id !== objectId));
   };
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
@@ -47,12 +58,17 @@ function App() {
     <div className="wrapper">
       {cartOpened && (
         <Drawer
-          items={cartItems}
+          cartItems={cartItems}
           onClose={() => setCartOpened(false)}
           onRemove={onRemoveItem}
+          setCartItems={setCartItems}
         />
       )}
       <Header onClickCard={() => setCartOpened(true)} />
+      <Routes>
+        <Route path="/favorites" element={<div>Favoriti mi</div>} />
+      </Routes>
+
       <div className="content container">
         <div className="title">
           <h1>
@@ -81,6 +97,7 @@ function App() {
           .map((obj, index) => (
             <Card
               key={index}
+              objectId={obj.id}
               title={obj.title}
               imageUrl={obj.imageUrl}
               price={obj.price}
