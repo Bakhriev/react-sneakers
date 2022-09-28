@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -24,9 +24,7 @@ function App() {
   React.useEffect(() => {
     axios
       .get("https://6325daa94cd1a2834c45d03c.mockapi.io/items")
-      .then((response) => {
-        setItems(response.data);
-      });
+      .then((response) => setItems(response.data));
     axios
       .get("https://6325daa94cd1a2834c45d03c.mockapi.io/cart")
       .then((res) => setCartItems(res.data));
@@ -39,16 +37,20 @@ function App() {
       );
       setCartItems((prev) => [...prev, obj]);
     } else {
-      console.log("Post: Current obj = ", obj);
-      await axios.post("https://6325daa94cd1a2834c45d03c.mockapi.io/cart", obj);
-      setCartItems((prev) => [...prev, obj]);
+      const { data } = await axios.post(
+        "https://6325daa94cd1a2834c45d03c.mockapi.io/cart",
+        obj
+      );
+      setCartItems((prev) => [...prev, data]);
     }
   };
   const onRemoveItem = async (objectId) => {
-    await axios.delete(
+    axios.delete(
       `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${objectId}`
     );
-    setCartItems((prev) => prev.filter((item) => item.id !== objectId));
+    setCartItems((prev) =>
+      prev.filter((item) => console.log(item.objectId, objectId))
+    );
   };
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
@@ -66,7 +68,7 @@ function App() {
       )}
       <Header onClickCard={() => setCartOpened(true)} />
       <Routes>
-        <Route path="/favorites" element={<div>Favoriti mi</div>} />
+        <Route path="/favorites" element={<h2>Favorites</h2>} />
       </Routes>
 
       <div className="content container">
