@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import styles from "./Card.module.scss";
 
 function Card({ onClickAdd, onFavorite, title, imageUrl, price, objectId }) {
-  const [isAdded, setIsAdded] = React.useState(false);
-  const [isLiked, setIsLiked] = React.useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleClickPlus = () => {
     onClickAdd({ objectId, title, imageUrl, price });

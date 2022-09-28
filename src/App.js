@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Routes, Link } from "react-router-dom";
 import Card from "./components/Card";
@@ -6,10 +6,10 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
 function App() {
-  const [cartOpened, setCartOpened] = React.useState(false);
-  const [cartItems, setCartItems] = React.useState([]);
-  const [items, setItems] = React.useState([]);
-  const [searchValue, setSearchValue] = React.useState("");
+  const [cartOpened, setCartOpened] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [items, setItems] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   // React.useEffect(() => {
   //   fetch("https://6325daa94cd1a2834c45d03c.mockapi.io/items")
@@ -21,7 +21,7 @@ function App() {
   //     });
   // }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get("https://6325daa94cd1a2834c45d03c.mockapi.io/items")
       .then((response) => setItems(response.data));
@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   const onCLickAddCart = async (obj) => {
-    if (cartItems.find((elem) => elem.id === obj.objectId)) {
+    if (cartItems.find((elem) => elem.objectId === obj.objectId)) {
       axios.delete(
         `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${obj.objectId}`
       );
@@ -45,7 +45,7 @@ function App() {
     }
   };
   const onRemoveItem = async (objectId) => {
-    axios.delete(
+    await axios.delete(
       `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${objectId}`
     );
     setCartItems((prev) =>
