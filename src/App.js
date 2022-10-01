@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -31,11 +31,10 @@ function App() {
   }, []);
 
   const onCLickAddCart = async (obj) => {
-    if (cartItems.find((elem) => elem.objectId === obj.objectId)) {
+    if (cartItems.find((elem) => elem.title === obj.title)) {
       axios.delete(
-        `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${obj.objectId}`
+        `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${obj.id}`
       );
-      setCartItems((prev) => [...prev, obj]);
     } else {
       const { data } = await axios.post(
         "https://6325daa94cd1a2834c45d03c.mockapi.io/cart",
@@ -44,13 +43,11 @@ function App() {
       setCartItems((prev) => [...prev, data]);
     }
   };
-  const onRemoveItem = async (objectId) => {
+  const onRemoveItem = async (id) => {
     await axios.delete(
-      `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${objectId}`
+      `https://6325daa94cd1a2834c45d03c.mockapi.io/cart/${id}`
     );
-    setCartItems((prev) =>
-      prev.filter((item) => console.log(item.objectId, objectId))
-    );
+    setCartItems((prev) => prev.filter((item) => item.id === id));
   };
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
@@ -74,7 +71,7 @@ function App() {
       <div className="content container">
         <div className="title">
           <h1>
-            {searchValue ? `Поиск по: "${searchValue}"` : "Все Кроссовки"}
+            {searchValue ? `Search on: "${searchValue}"` : "All Sneakers"}
           </h1>
           <div className="search">
             <img
@@ -86,7 +83,7 @@ function App() {
             <input
               onChange={onChangeSearchInput}
               value={searchValue}
-              placeholder="Поиск..."
+              placeholder="Search..."
             />
           </div>
         </div>
@@ -99,7 +96,7 @@ function App() {
           .map((obj, index) => (
             <Card
               key={index}
-              objectId={obj.id}
+              id={obj.id}
               title={obj.title}
               imageUrl={obj.imageUrl}
               price={obj.price}
